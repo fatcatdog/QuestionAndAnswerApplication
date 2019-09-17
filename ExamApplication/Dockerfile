@@ -1,0 +1,4 @@
+FROM openjdk:8 
+ADD target/question-and-answer.jar question-and-answer.jar
+EXPOSE 8081 
+ENTRYPOINT ["java", "-jar", "question-and-answer.jar"]

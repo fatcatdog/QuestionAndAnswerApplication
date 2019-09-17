@@ -75,7 +75,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<finalName>question-and-answer</finalName>
+					<finalName>todoapp-backend</finalName>
 				</configuration>
 			</plugin>
 		</plugins>

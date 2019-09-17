@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+# docker pull mysql:5.7
+#
+# docker run --name mysql-standalone -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=exam_application_db -e MYSQL_USER=user -e MYSQL_PASSWORD=password -d mysql:5.7
+  mysql-standalone:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=exam_application_db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - DATABASE_PORT=3306
+    expose:
+      - '3306'
+# docker pull ducheman/questionanswer:latest
+#
+# docker run -p 8080:8080 --name questionanswer --link mysql-standalone:mysql -d ducheman/questionanswer:latest
+  questionanswer:
+    image: ducheman/questionanswer:latest
+    ports:
+      - "8080:8080"
