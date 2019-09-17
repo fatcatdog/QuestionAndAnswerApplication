@@ -1,5 +1,6 @@
 This is a SpringBoot, Spring Security, JWT, JPA, and MySQL powered backend application.
 
+I relied heavily on https://www.javainuse.com/spring/boot-jwt-mysql which is a Spring Security JWT tutorial to get my JWT/SpringSecurity set up. Feel free to browse this tutorial to quickly learn and set up a JWT environment.
 
 Attached is a docker compose-compose.yml in the repo. Assuming you have Docker and Docker-Compose installed, all you need to do to test project is run: docker-compose up
 
@@ -50,3 +51,26 @@ If the application is working, it should respond with:
 
 GET http://localhost:8080/question/all JSON
 In the Header of your request, attach an Authorization key with the value being "Bearer YOUR JWT TOKEN YOU COPIED PREVIOUSLY"
+
+4. The application is designed to be a backend of a question and answer application. To attempt to answer a question.
+
+POST http://localhost:8080/question/submit
+
+Headers
+Key: Authorization Value: Bearer JWT token
+Key: Content-Type Value: application/json
+
+Body
+
+{
+   "id": 1,
+   "ask": "What is 10 + 15 + 12?",
+   "answer": 37
+}
+
+This should response with 200 OK : Correct!!!!1
+Any other answer aside from 37 would result in a 400 Not correct message.
+
+5. The application allows users to attempt to answer any question in the question/all endpoint. The logic behind the answer revolves around the question id. If you browse the Swagger UI you can view other endpoints, such as adding questions.
+
+Happy coding :)
