@@ -2,15 +2,30 @@ This is a SpringBoot, Spring Security, JWT, JPA, and MySQL powered backend appli
 
 I relied heavily on https://www.javainuse.com/spring/boot-jwt-mysql which is a Spring Security JWT tutorial to get my JWT/SpringSecurity set up. Feel free to browse this tutorial to quickly learn and set up a JWT environment.
 
+The SpringBoot app is configured to run on port 8080, and reads the mysql DB at port 3306. You can configure these port's in the Java app's application.properties file.
+
 Attached is a docker compose-compose.yml in the repo. Assuming you have Docker and Docker-Compose installed, all you need to do to test project is run: docker-compose up
 
-
 Once application is running,
-
 
 You should be able to hit: http://localhost:8080/swagger-ui.html#/ to view available rest end-points
 
 If you try hit http://localhost:8080/question/all without registering for the application, Spring Security's filter will prevent you from accessing any of the endpoints aside from the swagger UI endpoints.
+
+If you are choosing not to user docker-compose, to run the application locally requires five steps.
+
+1. Git clone this repo. CD into the ExamApplication folder.
+
+2. Ensure port 8080 is available for the SpringBoot application to run on. Alternatively, you can change the port in the application.properties file in ExamApplication. Ensure your MySql credentials, and port number, match the DB properties referenced in the application.properties. On my local machine, I have MySql version 8.0.11 running. 
+
+3. In MySql, create a schema named: exam_application_db
+(Alternatively, you could name this schema whatever you want as long as you change the name of the db referenced in the application.properties file in ExamApplication)
+
+4. mvn clean install
+
+5. mvn spring-boot:run
+
+
 
 The application is designed to be used in the following way.
 
@@ -68,9 +83,11 @@ Body
    "answer": 37
 }
 
-This should response with 200 OK : Correct!!!!1
+This should response with 200 OK : Correct!!!!
 Any other answer aside from 37 would result in a 400 Not correct message.
 
 5. The application allows users to attempt to answer any question in the question/all endpoint. The logic behind the answer revolves around the question id. If you browse the Swagger UI you can view other endpoints, such as adding questions.
+
+There are a few tests in the ExamApplication but they do not work when run with Docker.
 
 Happy coding :)
