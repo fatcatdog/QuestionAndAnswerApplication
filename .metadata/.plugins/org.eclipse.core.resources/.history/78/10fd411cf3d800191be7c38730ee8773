@@ -1,0 +1,19 @@
+package com.jacob.demo.unit;
+
+import org.junit.Test;
+
+import com.jacob.demo.model.Question;
+
+public class QuestionPojoTest {
+
+    @Test
+    public void checkingIfOurQuestionIsFormingCorrectlyTest() {
+    	Question ourQuestion = new Question(1, "We have a new question?", 7);
+    
+        assertEquals(, tester.multiply(10, 0), "10 x 0 must be 0");
+        assertEquals(0, tester.multiply(10, 0), "10 x 0 must be 0");
+        assertEquals(0, tester.multiply(10, 0), "10 x 0 must be 0");
+
+    
+    }
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="UnitTests" project="ExamApplication" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="com.jacob.demo.unit.UnitTests" time="0.001">
+    <testcase name="checkingIfOurDAOUserIsFormingCorrectlyTest" classname="com.jacob.demo.unit.UnitTests" time="0.001"/>
+    <testcase name="checkingIfOurQuestionIsFormingCorrectlyTest" classname="com.jacob.demo.unit.UnitTests" time="0.0"/>
+  </testsuite>
+</testrun>

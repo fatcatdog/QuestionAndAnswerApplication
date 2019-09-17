@@ -1,0 +1,24 @@
+package com.jacob.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
+
+import com.jacob.demo.service.QuestionService;
+
+@Component
+public class DataLoader implements ApplicationRunner {
+
+	@Autowired
+	private QuestionService questionService;
+	
+	@Override
+	public void run(ApplicationArguments args) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
+}

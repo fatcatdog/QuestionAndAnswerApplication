@@ -1,0 +1,12 @@
+package com.jacob.demo.unit;
+
+import org.junit.Test;
+
+public class QuestionPojoTest {
+
+    @Test
+    public void checkingIfOurQuestionIsFormingCorrectly() {
+    	Question ourQuestion = new Question(1, "We have a new question?", 7)
+    			;
+    }
+}

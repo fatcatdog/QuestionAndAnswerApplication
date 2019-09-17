@@ -1,0 +1,8 @@
+package com.jacob.demo.integration;
+
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class QuestionControllerTests {
+
+}

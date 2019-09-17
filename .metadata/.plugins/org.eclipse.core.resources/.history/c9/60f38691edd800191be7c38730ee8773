@@ -1,0 +1,33 @@
+package com.jacob.demo;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.jacob.demo.model.Question;
+import com.jacob.demo.repository.QuestionRepository;
+
+@RunWith(SpringRunner.class)
+@DataJpaTest
+public class QuestionRepositoryTest {
+
+	@Autowired
+    private TestEntityManager entityManager;
+ 
+    @Autowired
+    private QuestionRepository questionRepository;
+    
+    @Test
+    public void whenFindByIdThenReturnQuestion() {
+    	Question question = new Question(9, "That is the question", 4);
+	    entityManager.persist(question);
+	    entityManager.flush();
+
+	    <Optional>Question found = questionRepository.findById((int)question.getId());
+	
+    	
+    }
+}

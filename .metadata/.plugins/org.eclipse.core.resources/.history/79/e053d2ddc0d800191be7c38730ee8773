@@ -1,0 +1,31 @@
+package com.jacob.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.jacob.demo.model.Question;
+import com.jacob.demo.service.QuestionService;
+
+@RestController
+public class QuestionController {
+	
+	@Autowired
+	QuestionService questionService;
+	
+	@PostMapping(path="question/add", produces = "application/json; charset=UTF-8") 
+	public ResponseEntity<?> addNewQuestion (@RequestBody Question question) {
+
+		try {
+			questionService.save(question);
+		    logger.info("TaskController - addNewTask: " + task);
+			return new ResponseEntity<>(HttpStatus.OK) ;
+		} catch (Exception e) {
+		    logger.error("TaskController - addNewTask: " + e);
+    		return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
+		}
+	}
+
+}

@@ -1,0 +1,49 @@
+package com.jacob.demo.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.jacob.demo.model.Question;
+import com.jacob.demo.repository.QuestionRepository;
+
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@Service
+public class QuestionService {
+
+	private static final Logger logger = LoggerFactory.getLogger(QuestionService.class);
+
+	@Autowired
+	QuestionRepository questionRepository;
+	
+	public void save(Question question) {
+	    logger.info("QuestionService save");
+	    logger.info("Question: " + question);
+	    questionRepository.save(question);
+	}
+	
+	public Optional<Question> getQuestion(int id) {
+		logger.info("QuestionService getQuestion");
+	    logger.info("Question id: " + id);
+	    return questionRepository.findById(id);
+	}
+	
+	public Iterable<Question> getAllQuestions(){
+	    logger.info("QuestionService getAllQuestions");
+		return questionRepository.findAll();
+	}
+	
+	public boolean checkIfQuestionAnsweredCorrectly(Question question) {
+		Question ourQuestionFromDB = questionRepository.findQuestionByQuestion(question.getAsk());
+		
+		if(ourQuestionFromDB.getAnswer() == question.getAnswer()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+}

@@ -1,0 +1,73 @@
+package com.jacob.demo.controller;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.jacob.demo.model.Question;
+import com.jacob.demo.service.QuestionService;
+
+@RestController
+public class QuestionController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(QuestionController.class);
+
+	@Autowired
+	QuestionService questionService;
+	
+	@PostMapping(path="question/add", produces = "application/json; charset=UTF-8") 
+	public ResponseEntity<?> addNewQuestion (@RequestBody Question question) {
+
+		try {
+			questionService.save(question);
+		    logger.info("QuestionController - addNewQuestion: " + question);
+			return new ResponseEntity<>(HttpStatus.OK) ;
+		} catch (Exception e) {
+		    logger.error("QuestionController - addNewQuestion: " + e);
+    		return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
+		}
+	}
+
+	
+	@GetMapping(path = "question/all",  produces = "application/json; charset=UTF-8") 
+	public ResponseEntity<?> getAllQuestions() {
+		try {
+    		Iterable<Question> allQuestions = questionService.getAllQuestions();
+		    logger.info("QuestionController - allQuestions: " + allQuestions);
+    		return new ResponseEntity<>(allQuestions, HttpStatus.OK); 
+		} catch (Exception e) {
+			System.out.println(e);
+		    logger.error("QuestionController - allQuestions: " + e);
+    		return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
+		}
+	}
+	
+	@PostMapping(path="question/submit", produces = "application/json; charset=UTF-8") 
+	public ResponseEntity<?> answerQuestion (@RequestBody Question question) {
+
+		try {
+			questionService.save(question);
+		    logger.info("QuestionController - answerQuestion: " + question);
+		    
+		    boolean didUserAnswerCorrectly = questionService.checkIfQuestionAnsweredCorrectly(question);
+		    
+			    if(didUserAnswerCorrectly) {
+					return new ResponseEntity<>(HttpStatus.OK) ;
+			    } else {
+		    		return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
+			    }
+		    
+		} catch (Exception e) {
+		    logger.error("QuestionController - answerQuestion: " + e);
+    		return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
+		}
+	}
+	
+	
+}

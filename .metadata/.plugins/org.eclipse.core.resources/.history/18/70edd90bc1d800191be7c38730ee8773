@@ -1,0 +1,36 @@
+package com.jacob.demo.controller;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.jacob.demo.model.Question;
+import com.jacob.demo.service.QuestionService;
+
+@RestController
+public class QuestionController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(QuestionController.class);
+
+	@Autowired
+	QuestionService questionService;
+	
+	@PostMapping(path="question/add", produces = "application/json; charset=UTF-8") 
+	public ResponseEntity<?> addNewQuestion (@RequestBody Question question) {
+
+		try {
+			questionService.save(question);
+		    logger.info("QuestionController - addNewQuestion: " + question);
+			return new ResponseEntity<>(HttpStatus.OK) ;
+		} catch (Exception e) {
+		    logger.error("QuestionController - addNewQuestion: " + e);
+    		return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
+		}
+	}
+
+}

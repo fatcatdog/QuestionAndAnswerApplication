@@ -1,0 +1,6 @@
+package com.jacob.demo;
+
+@Component
+public class DataLoader {
+
+}

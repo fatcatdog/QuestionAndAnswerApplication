@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ExamApplicationTests" project="ExamApplication" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.jacob.demo.ExamApplicationTests" time="0.23">
+    <testcase name="contextLoads" classname="com.jacob.demo.ExamApplicationTests" time="0.23"/>
+  </testsuite>
+</testrun>

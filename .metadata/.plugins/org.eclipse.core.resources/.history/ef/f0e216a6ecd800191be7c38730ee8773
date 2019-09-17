@@ -1,0 +1,7 @@
+package com.jacob.demo;
+
+@RunWith(SpringRunner.class)
+@DataJpaTest
+public class QuestionRepositoryTest {
+
+}

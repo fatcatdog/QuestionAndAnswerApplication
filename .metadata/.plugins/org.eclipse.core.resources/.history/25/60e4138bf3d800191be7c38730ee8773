@@ -1,0 +1,29 @@
+package com.jacob.demo.unit;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+import com.jacob.demo.model.DAOUser;
+import com.jacob.demo.model.Question;
+
+public class UnitTests {
+
+    @Test
+    public void checkingIfOurQuestionIsFormingCorrectlyTest() {
+    	Question ourQuestion = new Question(1, "We have a new question?", 7);
+    
+        assertEquals(ourQuestion.getId(), 1);
+        assertEquals(ourQuestion.getAsk(), "We have a new question?");
+        assertEquals(ourQuestion.getAnswer(), 7);
+    }
+    
+    @Test
+    public void checkingIfOurDAOUserIsFormingCorrectlyTest() {
+    	DAOUser ourUser = new DAOUser();
+    
+        assertEquals(ourQuestion.getId(), 1);
+        assertEquals(ourQuestion.getAsk(), "We have a new question?");
+        assertEquals(ourQuestion.getAnswer(), 7);
+    }
+}

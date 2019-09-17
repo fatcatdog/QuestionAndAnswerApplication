@@ -1,0 +1,13 @@
+package com.jacob.demo.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.jacob.demo.repository.QuestionRepository;
+
+@Service
+public class QuestionService {
+
+	@Autowired
+	QuestionRepository questionRepository;
+}
